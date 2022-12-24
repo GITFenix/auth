@@ -1,0 +1,1 @@
+FROM auth-base as auth-dev

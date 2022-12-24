@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  base:
+    build:
+      context: ./
+      dockerfile: ./docker/base/Dockerfile
+    image: auth-base
+  app:
+    build:
+      context: ./
+      dockerfile: ./docker/dev/Dockerfile
+    image: auth-dev
+    volumes:
+      - .:/home/auth
+    networks:
+      - default
+  web:
+    image: nginx:1.22.0
+    volumes:
+      - .:/home/auth
+      - ./docker/dev/vhost.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - default
+    ports:
+      - 80:80
