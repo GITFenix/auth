@@ -15,6 +15,7 @@
         "symfony/yaml": "6.2.*"
     },
     "require-dev": {
+        "behat/behat": "^3.12"
     },
     "config": {
         "allow-plugins": {
